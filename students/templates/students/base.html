@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Buniyaad</title>
+    <link rel="stylesheet" href="/static/students/css/bootstrap.css">
+</head>
+<body>
+<nav "navbar sticky-top navbar-light bg-light">
+  <div class="container fluid">
+    <a class="navbar-brand" href="/">
+      <img src="/static/students/logos/headerlogo.png" alt="" width="400" height="110">
+    </a>
+    <a class="container fluid navbar-brand offset-5" href="/">
+        <img src="/static/students/logos/digital_logo.jpg" alt="" width="200" height="85">
+    </a>
+  </div>
+</nav>
+
+ <div class="container mt-5">
+     {% block content%}
+
+     {% endblock content%}
+ </div>
+
+<!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2021 Copyright:
+    <a href="https://missionbuniyaad.com/"> MissionBuniyaad.com</a>
+  </div>
+  <!-- Copyright -->
+
+<script src="/static/students/js/jquery.js"></script>
+<script src="/static/students/js/popper.js"></script>    
+<script src="/static/students/js/bootstrap.js"></script>    
+
+</body>
+</html>
