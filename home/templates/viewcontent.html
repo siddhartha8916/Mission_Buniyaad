@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load embed_video_tags %}
+
+{% block content%}
+    <div class="row">
+        <div class="col-sm-12" id="viewContent">
+            <h3 class="text-center alert alert-info">View Content</h3>
+        </div>
+    <div class="row">   
+       <div class="col-sm-2"> 
+        {% for con in content %}
+            {% if forloop.first %}
+                <p class="fs-4 fw-bold">{{con.classname}}</p>
+            {% endif %}
+        {% endfor %}
+        </div>
+        <div class="col-sm-2 offset-8"> 
+        {% for con in content %}
+            {% if forloop.first %}
+                <p class="fs-4 fw-bold">{{con.added}}</p>
+            {% endif %}
+        {% endfor %}
+       </div>
+       <p align = "center" class="fs-4 fw-normal">Practice on the worksheet by watching today's video</p>
+        <hr>
+       {% for con in content %}                
+       <div class="container">
+           <div class="row">
+               <div class="col-10 mx-auto mt-5">
+                    <p class="fw-bolder">Sub: {{con.subjectname}}</p>
+                    <p class="fw-bold">Chapter: {{con.chname}}</p>
+                    {% video con.videourl '600x360'%}<br>
+                    <p class="fw-bold">Video Title: {{con.videotitle}}</p>
+                    <a href="{{con.assignmenturl}}" class="btn btn-info btn-sm offset-10">Click here for Assignment</a>
+                    <hr>
+               </div>
+           </div>
+       </div>
+       {% endfor %}   
+{% endblock content%}

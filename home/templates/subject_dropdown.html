@@ -1,0 +1,8 @@
+<option value="">Select Subjects</option>
+{% for sub in subjects %}
+    <option value="">{{ sub.subjectname }}</option>
+{% endfor %}
+
+    {% comment %} {% for s in sub.subjectname.all %}
+        <option value="">{{ s }}</option>
+    {% endfor %} {% endcomment %}

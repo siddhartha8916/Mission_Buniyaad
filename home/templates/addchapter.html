@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content%}
+    <div class="row">
+       <div class="col-sm-4">
+        <h4 class="text-center alert alert-info">Add New Chapter</h4>
+        <form action="" id='chapterForm' method="POST", subject-url="{% url 'ajax_load_subject' %}">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class = "btn btn-success" value="Add Chapter">
+        </form>
+       </div>
+    <div class="col-sm-5 offset-3">
+            <h4 class="text-center alert alert-info">List of Chapters</h4>
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="GET" class="form-inline">
+                    <div class="form-group">
+                        {{myFilter.form}}
+                        <input type="submit" class = "btn btn-success btn-sm" value="Search">
+                    </div>
+                    </form>
+                </div>
+                </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Class</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Chapter Name</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ch in chapter %}
+                        <tr>
+                        <th scope="row">{{ch.id}}</th>
+                        <td>{{ch.classname}}</td>
+                        <td>{{ch.subjectname}}</td>
+                        <td>{{ch.chname}}</td>
+                        <td> <a href="{% url 'updatechapter' ch.id %}" class="btn btn-info btn-sm">Update</a> </td>
+                        <td> <a href="{% url 'deletechapter' ch.id %}" class="btn btn-danger btn-sm">Delete</a> </td>
+                        </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+{% comment %} <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_classname").change(function () {
+        const url = $("#chapterForm").attr("subject-url");  // get the url of the `load_cities` view
+        const classid = $(this).val();  // get the selected country ID from the HTML input
+
+        $.ajax({                       // initialize an AJAX request
+            url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+            data: {
+                'class_id': classid       // add the country id to the GET parameters
+            },
+            success: function (data) {   // `data` is the return of the `load_cities` view function
+                $("#id_subjectname").html(data);  // replace the contents of the city input with the data that came from the server
+               }
+        });
+
+    });
+</script> {% endcomment %}
+{% endblock %}
