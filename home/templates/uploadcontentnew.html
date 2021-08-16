@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+
+{% block content%}
+    <div class="row">
+       <div class="col-sm-6" id="classSubject">
+        <h4 class="text-center alert alert-info">Upload Content</h4>
+        <form action="" method="POST" id="contentForm" subject-url = "{% url 'ajax_load_subject' %}"
+        chapter-url = "{% url 'ajax_load_chapter' %}">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class = "btn btn-success" id="submit", value="Submit">
+        </form>
+       </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $("#id_classname").change(function () {
+        const url = $("#contentForm").attr("subject-url");  
+        const classid = $(this).val();
+         
+        $.ajax({                       
+            url: url,                    
+            data: {
+                'class_id': classid  
+            },
+            success: function (data) {   
+                $("#id_subjectname").html(data);  
+               }
+        });
+
+    });
+
+    $("#id_subjectname").click(function () {
+        const url = $("#contentForm").attr("chapter-url"); 
+        const classid = $("#id_classname").val(); 
+        const subid = $(this).val();
+         
+        $.ajax({                       
+            url: url,                    
+            data: {
+                'classid': classid ,
+                'subid':subid 
+            },
+            success: function (data) {   
+                $("#id_chname").html(data);  
+               }
+        });
+
+    });
+    
+</script>
+{% endblock content%}

@@ -29,14 +29,13 @@ class Chapter(models.Model):
     def __str__(self):
         return self.chname
 
+
 class Content(models.Model):
     classname = models.ForeignKey(Standard,verbose_name='Class',on_delete=models.CASCADE)
     subjectname = models.ForeignKey(Subject,verbose_name='Subject',on_delete=models.CASCADE)
     chname = models.ForeignKey(Chapter,verbose_name='Chapter',on_delete=models.CASCADE)
-    added = models.DateField(auto_now=True)
-    videotitle = models.CharField('Video Title',max_length=100,default='')
-    videourl = EmbedVideoField(verbose_name='Video URL')
-    assignmenturl = models.URLField(verbose_name='Assignment URL',max_length=500)
-    learningoutcome = models.CharField('Learning Outcome',max_length=100)
-
-    
+    added = models.DateField(verbose_name='Date Added')
+    videotitle = models.CharField(verbose_name='Video Title',max_length=100,default='')
+    videourl = models.CharField(verbose_name='Video URL',max_length=100,default='')
+    assignmenturl = models.CharField(verbose_name='Assignment URL',max_length=100,default='')
+    learningoutcome =models.CharField(verbose_name='Learning Outcome',max_length=100,default='')

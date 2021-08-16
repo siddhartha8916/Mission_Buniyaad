@@ -3,6 +3,7 @@ from django import forms
 from django.forms import fields
 from .models import *
 
+
 class AddSubjectForm(forms.ModelForm):
     
     class Meta:
@@ -58,8 +59,9 @@ class AddChapterForm(forms.ModelForm):
         # elif self.instance.pk:
         #     self.fields['subjectname'].queryset = self.instance.subject.city_set.order_by('name')
 
-class UploadContentForm(forms.ModelForm):
 
+
+class UploadContent(forms.ModelForm):
     class Meta:
         model = Content
         fields = '__all__'
@@ -71,7 +73,5 @@ class UploadContentForm(forms.ModelForm):
             'videotitle' : forms.TextInput(attrs={'class':'form-control'}),
             'assignmenturl' : forms.TextInput(attrs={'class':'form-control'}),
             'learningoutcome' : forms.TextInput(attrs={'class':'form-control'}),
+            'added' : forms.DateInput(attrs={'type':'date'})
             }
-
-
-            

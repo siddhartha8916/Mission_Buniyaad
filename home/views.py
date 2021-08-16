@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponseRedirect, redirect
 from .models import *
 from .forms import *
 from .filters import *
+from datetime import date
 
 # Create your views here.
 def index(request):
@@ -124,20 +125,6 @@ def deleteChapter(request,id):
     ch.delete()
     return HttpResponseRedirect('/addchapter')
 
-def uploadContent(request):
-    form = UploadContentForm()
-    if request.method=='POST':
-        form = UploadContentForm(request.POST)
-        if form.is_valid:
-            form.save()
-        form = UploadContentForm()
-    context = {'form':form}
-    return render(request,'uploadcontent.html',context)
-
-def load_subject(request):
-    classid = request.GET.get('class_id')
-    subjects = Chapter.objects.filter(classname=classid)
-    return render(request, 'subject_dropdown.html', {'subjects': subjects})
 
 def load_chapter(request):
     classid = request.GET.get('class_id')
@@ -154,6 +141,38 @@ def selectClass(request):
     return render(request, 'selectclass.html',context)
 
 def viewContent(request,id):
-    content = Content.objects.filter(classname=id)
+    content = Content.objects.filter(classname=id,added=date.today())
     context = {'content':content}
     return render(request, 'viewcontent.html',context)
+
+def load_subject(request):
+    classid = request.GET.get('class_id')
+    subjects = AssignSubject.objects.filter(classname=classid)
+    return render(request, 'subject_dropdown.html', {'subjects': subjects})
+
+def load_chapter(request):
+    classid = request.GET.get('classid')
+    subid = request.GET.get('subid')
+    chapters = Chapter.objects.filter(classname=classid,subjectname=subid)
+    return render(request, 'chapter_dropdown.html', {'chapters': chapters})
+
+def uploadContent(request):
+    form = UploadContent()
+    if request.method=='POST':
+        form = UploadContent(request.POST)
+        if form.is_valid():
+            cl = form.cleaned_data['classname']
+            sub = form.cleaned_data['subjectname']
+            ch = form.cleaned_data['chname']
+            vurl = form.cleaned_data['videourl']
+            vtit = form.cleaned_data['videotitle']
+            asurl = form.cleaned_data['assignmenturl']
+            lrout = form.cleaned_data['learningoutcome']
+            ad = form.cleaned_data['added']
+            form = Content(classname=cl,subjectname=sub,chname=ch,videotitle=vtit,videourl=vurl,
+                          assignmenturl=asurl,learningoutcome=lrout,added=ad)
+            form.save()  
+        form = UploadContent()
+    context = {'form':form}
+    return render(request,'uploadcontentnew.html',context)
+

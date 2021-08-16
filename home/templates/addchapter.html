@@ -47,22 +47,23 @@
                 </tbody>
             </table>
         </div>
-{% comment %} <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
     $("#id_classname").change(function () {
-        const url = $("#chapterForm").attr("subject-url");  // get the url of the `load_cities` view
-        const classid = $(this).val();  // get the selected country ID from the HTML input
-
-        $.ajax({                       // initialize an AJAX request
-            url: url,                    // set the url of the request (= /persons/ajax/load-cities/ )
+        const url = $("#chapterForm").attr("subject-url");  
+        const classid = $(this).val();
+         
+        $.ajax({                       
+            url: url,                    
             data: {
-                'class_id': classid       // add the country id to the GET parameters
+                'class_id': classid  
             },
-            success: function (data) {   // `data` is the return of the `load_cities` view function
-                $("#id_subjectname").html(data);  // replace the contents of the city input with the data that came from the server
+            success: function (data) {   
+                $("#id_subjectname").html(data);  
                }
         });
 
     });
-</script> {% endcomment %}
+    
+</script>
 {% endblock %}

@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.db.models.query_utils import subclasses
 from .models import *
 
 # Register your models here.
