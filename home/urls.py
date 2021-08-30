@@ -1,5 +1,7 @@
+from home.models import Content
 from django.urls import path
 from . import views
+from django.views.generic.dates import ArchiveIndexView
 
 urlpatterns = [
     path('',views.index, name="index" ),
@@ -20,5 +22,7 @@ urlpatterns = [
     path('ajax/load-chapter/', views.load_chapter, name='ajax_load_chapter'),
     path('selectclass',views.selectClass, name="selectclass" ),
     path('viewcontent/<int:id>',views.viewContent, name="viewcontent"),
+    path('archive/',ArchiveIndexView.as_view(model=Content, date_field="added"),name="content_archive"),
+    path('demo',views.demo, name="demo" ),
 ]
 

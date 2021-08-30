@@ -5,6 +5,11 @@ from .filters import *
 from datetime import date
 
 # Create your views here.
+
+def demo(request):
+    return render(request, 'demo.html')
+
+
 def index(request):
     return render(request, 'index.html')
 
@@ -141,9 +146,17 @@ def selectClass(request):
     return render(request, 'selectclass.html',context)
 
 def viewContent(request,id):
-    content = Content.objects.filter(classname=id,added=date.today())
-    context = {'content':content}
-    return render(request, 'viewcontent.html',context)
+    if request.method=='POST':
+        selectdate = request.POST.get('selectdate')
+        #print(selectdate)
+        searchresult = Content.objects.filter(classname=id,added=selectdate)
+        context = {'searchresult':searchresult}
+        return render(request, 'viewdatecontent.html',context)
+    else:
+        content = Content.objects.filter(classname=id,added=date.today())
+        allcontent = Content.objects.filter(classname=id)
+        context = {'content':content,'allcontent':allcontent}
+        return render(request, 'viewcontent.html',context)
 
 def load_subject(request):
     classid = request.GET.get('class_id')

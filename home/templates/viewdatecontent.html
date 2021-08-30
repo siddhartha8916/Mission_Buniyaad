@@ -11,14 +11,14 @@
         </div>
     <div class="row">   
        <div class="col-sm-2"> 
-        {% for con in content %}
+        {% for con in searchresult %}
             {% if forloop.first %}
                 <p style="float: left;" class="fs-4 fw-bold">{{con.classname}}</p>
             {% endif %}
         {% endfor %}
         </div>
         <div class="col-sm-2 offset-8"> 
-        {% for con in content %}
+        {% for con in searchresult %}
             {% if forloop.first %}
                 <p style="float: right;" class="fs-5 fw-light">{{con.added}}</p><br>
             {% endif %}
@@ -44,7 +44,7 @@
        <div class="container">
            <div class="col">
             <div class="row">
-            {% for con in content %}
+            {% for con in searchresult %}
                <div class="col-8 mx-20px mt-5">
                     <p class="fw-bolder">Sub: {{con.subjectname}}</p>
                     <p class="fw-bold">Chapter: {{con.chname}}</p>
@@ -62,7 +62,7 @@
             <div class="row">
                 <h5>Recommended Videos</h5>
                 <hr>
-                {% for con in allcontent %}
+                {% for con in searchresult %}
                 <p class="fw-bolder">Sub: {{con.subjectname}}</p><br>
                 {% video con.videourl '320x240'%}
                 <hr>
