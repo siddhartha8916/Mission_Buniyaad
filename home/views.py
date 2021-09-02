@@ -3,6 +3,7 @@ from .models import *
 from .forms import *
 from .filters import *
 from datetime import date
+from django.utils.dateparse import parse_date
 
 # Create your views here.
 
@@ -148,14 +149,17 @@ def selectClass(request):
 def viewContent(request,id):
     if request.method=='POST':
         selectdate = request.POST.get('selectdate')
-        #print(selectdate)
         searchresult = Content.objects.filter(classname=id,added=selectdate)
-        context = {'searchresult':searchresult}
+        allcontent = Content.objects.filter(classname=id)
+        subjects = AssignSubject.objects.filter(classname=id)
+        selectdate = parse_date(selectdate)
+        context = {'searchresult':searchresult,'subjects':subjects,'allcontent':allcontent,'selectdate':selectdate}
         return render(request, 'viewdatecontent.html',context)
     else:
         content = Content.objects.filter(classname=id,added=date.today())
+        subjects = AssignSubject.objects.filter(classname=id)
         allcontent = Content.objects.filter(classname=id)
-        context = {'content':content,'allcontent':allcontent}
+        context = {'content':content,'subjects':subjects,'allcontent':allcontent}
         return render(request, 'viewcontent.html',context)
 
 def load_subject(request):
