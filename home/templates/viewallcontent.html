@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content%}
+    <div class="col-sm-12 center">
+            <h4 class="text-center alert alert-info">List of Contents</h4>
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="GET" class="form-inline">
+                    <div class="form-group">
+                        {{myFilter.form}}
+                        <input type="submit" class = "btn btn-success btn-sm" value="Search">
+                    </div>
+                    </form>
+                </div>
+                </div>
+            <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col" class="align-middle">ID</th>
+                    <th scope="col" class="align-middle">Class</th>
+                    <th scope="col" class="align-middle">Subject</th>
+                    <th scope="col" class="align-middle">Chapter Name</th>
+                    <th scope="col" class="align-middle">Video Title</th>
+                    <th scope="col" class="align-middle">Video URL</th>
+                    <th scope="col" class="align-middle">Assignment URL</th>
+                    <th scope="col" class="align-middle">Learning Outcome</th>
+                    <th scope="col" class="align-middle">Date Visibility</th>
+                    <th scope="col" class="align-middle">Update</th>
+                    <th scope="col" class="align-middle">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for con in content %}
+                        <tr>
+                        <th scope="row">{{con.id}}</th>
+                        <td>{{con.classname}}</td>
+                        <td>{{con.subjectname}}</td>
+                        <td>{{con.chname}}</td>
+                        <td>{{con.videotitle}}</td>
+                        <td><a href="{{con.videourl}}" target='__blank' class="link-info">Video Link</a></td>
+                        <td><a href="{{con.assignmenturl}}" target='__blank' class="link-info">Assignment Link</a></td>
+                        <td>{{con.learningoutcome}}</td>
+                        <td>{{con.added}}</td>
+                        <td> <a href="{% url 'updatecontent' con.id %}" class="btn btn-info btn-sm">Update</a> </td>
+                        <td> <a href="{% url 'deletecontent' con.id %}" class="btn btn-danger btn-sm">Delete</a> </td>
+                        </tr>
+                    {% endfor %} 
+                </tbody>
+            </table>
+        </div>
+        </div>
+{% endblock content%}

@@ -101,42 +101,11 @@ def deleteAssignSubject(request,id):
     asssub.delete()
     return HttpResponseRedirect('/assignsubject')
 
-def addChapter(request):
-    form = AddChapterForm()
-    if request.method=='POST':
-        form = AddChapterForm(request.POST)
-        if form.is_valid:
-            form.save()
-        form = AddChapterForm()
-    chapter = Chapter.objects.all()
-    myFilter = ChapterFilter(request.GET,queryset=chapter)
-    chapter = myFilter.qs
-    context = {'form':form,'chapter':chapter,'myFilter':myFilter}
-    return render(request,'addchapter.html',context)
-
-
-def updateChapter(request,id):
-    ch = Chapter.objects.get(pk=id)
-    form = AddChapterForm(instance=ch)
-    if request.method=='POST':
-        form = AddChapterForm(request.POST,instance=ch)
-        if form.is_valid:
-            form.save()
-            return redirect('/addchapter')
-    context = {'form':form}
-    return render(request,'updatechapter.html',context)
-
 def deleteChapter(request,id):
     ch = Chapter.objects.filter(pk=id)
     ch.delete()
     return HttpResponseRedirect('/addchapter')
 
-
-def load_chapter(request):
-    classid = request.GET.get('class_id')
-    subid = request.GET.get('sub_id')
-    chapters = Chapter.objects.filter(classname=classid,subjectname=subid)
-    return render(request, 'chapter_dropdown.html', {'chapters': chapters})
 
 def studentdashboard(request):
     return render(request, 'studentbase.html')
@@ -193,3 +162,65 @@ def uploadContent(request):
     context = {'form':form}
     return render(request,'uploadcontentnew.html',context)
 
+def relatedContent(request,std,sub,ch):
+    content = Content.objects.filter(classname=std,subjectname=sub,chname=ch).order_by('added')
+    context = {'content':content}
+    return render(request,'relatedcontent.html',context)
+
+
+def load_chapter(request):
+    classid = request.GET.get('class_id')
+    subid = request.GET.get('sub_id')
+    chapters = Chapter.objects.filter(classname=classid,subjectname=subid)
+    return render(request, 'chapter_dropdown.html', {'chapters': chapters})
+
+
+def addChapter(request):
+    form = AddChapterForm()
+    if request.method=='POST':
+        form = AddChapterForm(request.POST)
+        if form.is_valid:
+            form.save()
+        form = AddChapterForm()
+    chapter = Chapter.objects.all()
+    myFilter = ChapterFilter(request.GET,queryset=chapter)
+    chapter = myFilter.qs
+    context = {'form':form,'chapter':chapter,'myFilter':myFilter}
+    return render(request,'addchapter.html',context)
+
+
+def viewContent(request):
+    content = Content.objects.all()
+    myFilter = ContentFilter(request.GET,queryset=content)
+    content = myFilter.qs
+    context = {'content':content,'myFilter':myFilter}
+    return render(request,'viewallcontent.html',context)
+
+def deleteContent(request,id):
+    con = Content.objects.get(pk=id)
+    con.delete()
+    return HttpResponseRedirect('/viewcontent')
+
+
+def updateChapter(request,id):
+    ch = Chapter.objects.get(pk=id)
+    form = AddChapterForm(instance=ch)
+    if request.method=='POST':
+        form = AddChapterForm(request.POST,instance=ch)
+        if form.is_valid:
+            form.save()
+            return redirect('/addchapter')
+    context = {'form':form}
+    return render(request,'updatechapter.html',context)
+
+
+def updateContent(request,id):
+    con = Content.objects.get(pk=id)
+    form = UploadContent(instance=con)
+    if request.method=='POST':
+        form = UploadContent(request.POST,instance=con)
+        if form.is_valid:
+            form.save()
+            return redirect('/viewcontent')
+    context = {'form':form}
+    return render(request,'updatecontent.html',context)

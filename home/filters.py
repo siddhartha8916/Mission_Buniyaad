@@ -8,5 +8,9 @@ class ChapterFilter(django_filters.FilterSet):
         model = Chapter
         fields = '__all__'
         exclude = ['chname']
-        
+
+class ContentFilter(django_filters.FilterSet):
+        class Meta:
+            model = Content
+            fields = ['classname','subjectname','chname']
         

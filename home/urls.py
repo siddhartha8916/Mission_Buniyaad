@@ -24,5 +24,9 @@ urlpatterns = [
     path('viewcontent/<int:id>',views.viewContent, name="viewcontent"),
     path('archive/',ArchiveIndexView.as_view(model=Content, date_field="added"),name="content_archive"),
     path('demo',views.demo, name="demo" ),
+    path('viewcontent',views.viewContent, name="viewcontent" ),
+    path('relatedcontent/<str:std>/<str:sub>/<str:ch>',views.relatedContent, name="relatedcontent" ),
+    path('deletecontent/<int:id>',views.deleteContent, name="deletecontent"),
+    path('updatecontent/<int:id>',views.updateContent, name="updatecontent"),
 ]
 

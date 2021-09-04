@@ -48,7 +48,8 @@
             {% for con in content %}
                <div class="col-8 mx-20px mt-5">
                     <p class="fw-bolder">Sub: {{con.subjectname}}</p>
-                    <p class="fw-bold">Chapter: {{con.chname}}</p>
+                    <p class="fw-bold">Chapter: {{con.chname}}
+                    <a href ="{% url 'relatedcontent' con.classname.id con.subjectname.id con.chname.id %}" style="color:red;margin-left:10px;font-size:16px;">Click here to view related content</a></p>
                     {% video con.videourl as my_video %}
                     <a href = "{{ my_video.url }}" target = '__blank' ><img style="width: 600px; height: 360px; padding:10px;"src="{{my_video.thumbnail}} "></img></a>
                     {% endvideo %}<br>
@@ -63,7 +64,7 @@
         </div>
         </div>
 
-        <div class="container mt-5">
+        {% comment %} <div class="container mt-5">
             <div class="row">
                 <h5>Recommended Videos</h5>
                 <hr>
@@ -76,6 +77,6 @@
                 <hr>
                 </div>
             </div>
-        </div>
+        </div> {% endcomment %}
         
 {% endblock content %}
