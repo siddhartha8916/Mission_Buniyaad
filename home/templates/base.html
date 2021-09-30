@@ -1,65 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mission Buniyaad</title>
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/bootstrap.css">
-    <link rel="stylesheet" href="/static/css/sidebars.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>
+        {% block title %}
+
+        {% endblock title %}
+
+    </title>
 </head>
+
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">
-      <img src="/static/logos/headerlogo.png" alt="" width="200" height="50">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="{% url 'selectclass' %}">Select Class</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Contact Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/">Admin Area</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/admin">Admin Dashboard Django</a>
-        </li>
-      </ul>
+    <nav class="navbar-light mt-3">
+        <div class="container-fluid text-center align-items-center">
+            <div class="row">
+                <div class="col-sm-3">
+                    <a href="/"><img src="/static/logos/rajasthan.png" class="img-fluid" alt="..." style="height: 80px;"></a>
+                </div>
+                <div class="col-sm-6">
+                    <img src="/static/logos/logo_new.png" class="img-fluid" alt="..." style="height: 80px;">
+                </div>
+                <div class="col-sm-3">
+                    <img src="/static/logos/ms.png" class="img-fluid" alt="..." style="height: 80px;">
+                </div>
+            </div>
+        </div>
+    </nav>
+    {% block content %}
+
+    {% endblock content %}
+
+    <div class="footer-copyright text-center py-3 mt-5">© 2021 Copyright:
+        <a href="https://missionbuniyaad.com/"> MissionBuniyaad.com</a>
     </div>
-  </div>
-</nav>
 
-
- <div class="container mt-5">
-     {% block content%}
-
-     {% endblock content%}
- </div>
-
-<!-- Copyright -->
-  <div class="footer-copyright text-center py-3 mt-5">© 2021 Copyright:
-    <a href="https://missionbuniyaad.com/"> MissionBuniyaad.com</a>
-  </div>
-  <!-- Copyright -->
-
-<script src="/static/js/jquery.js"></script>
-<script src="/static/js/popper.js"></script>    
-<script src="/static/js/bootstrap.js"></script> 
-<script src="/static/js/sidebars.js"></script>   
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
