@@ -6,3 +6,4 @@ class CSVForm(forms.ModelForm):
   model = Csvs
   fields = ('filename',)
   labels = {'filename':'Upload CSV   '}
+

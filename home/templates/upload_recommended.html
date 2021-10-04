@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Upload Content | Std. I
+Upload Recommended Videos
 {% endblock title %}
 
 
 {% block content %}
 <div class="container">
         <div class="py-5 text-center bg-secondary text-white rounded">
-         <h1 class="mb-3">Upload Class 1 Data</h1>
+         <h1 class="mb-3">Upload Recommended Video</h1>
          <form action="" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           {{form}}
