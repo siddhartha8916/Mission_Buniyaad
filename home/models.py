@@ -19,12 +19,17 @@ class std1(models.Model):
     playlist_link_2	= models.URLField()
     worksheet_link_2 = models.URLField()
 
-class recommended(models.Model):
-    grade = models.CharField(max_length=100)
-    subject = models.CharField(max_length=100)
-    chno = models.CharField(max_length=100)
-    chname = models.CharField(max_length=100)
-    partno = models.CharField(max_length=100)
-    title = models.CharField(max_length=100)
-    duration = models.CharField(max_length=100)
-    videourl = models.CharField(max_length=100)
+class all_content(models.Model):
+    week = models.CharField(max_length=5)
+    date = models.DateField()
+    day = models.CharField(max_length=100)
+    std = models.CharField(max_length=100)
+    subject_1 = models.TextField(max_length=100)
+    competency_1 = models.TextField(max_length=2000)
+    playlist_link_1	= models.URLField()
+    worksheet_link_1 = models.URLField()
+    subject_2 = models.TextField(max_length=100)
+    competency_2 = models.TextField(max_length=2000)
+    playlist_link_2	= models.URLField()
+    worksheet_link_2 = models.URLField()
+

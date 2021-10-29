@@ -5,10 +5,7 @@ from .models import *
 class ImageAdmin(admin.ModelAdmin):
     list_display = ['id', 'filename', 'uploaded','activated']
 
-@admin.register(std1)
+@admin.register(all_content)
 class ImageAdmin(admin.ModelAdmin):
-    list_display = ['week','date','day','subject_1','competency_1','playlist_link_1','worksheet_link_1','subject_2','competency_2','playlist_link_2','worksheet_link_2']
+    list_display = ['week','date','day','std','subject_1','competency_1','playlist_link_1','worksheet_link_1','subject_2','competency_2','playlist_link_2','worksheet_link_2']
 
-@admin.register(recommended)
-class ImageAdmin(admin.ModelAdmin):
-    list_display = ['grade','subject','chno','chname','partno','title','duration','videourl']

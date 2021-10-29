@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Student Homepage
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+  <p class="topHeading">Select your respective class and stream to access today's content</p>
+  
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <a href="{% url 'view_content' 1 %}" style="text-decoration: none;"><button type="button"
+          class="btn-grad btn-text mx-auto">Class 1</button></a>
+    </div>
+    <div class="col">
+      <a href="{% url 'view_content' 2 %}" style="text-decoration: none;"><button type="button"
+          class="btn-grad btn-text mx-auto">Class 2</button></a>
+    </div>
+    <div class="col">
+      <a href="{% url 'view_content' 3 %}" style="text-decoration: none;"><button type="button"
+          class="btn-grad btn-text mx-auto">Class 3</button></a>
+    </div>
+    <div class="col">
+      <a href="{% url 'view_content' 4 %}" style="text-decoration: none;"><button type="button"
+          class="btn-grad btn-text mx-auto">Class 4</button></a>
+    </div>
+    <div class="col">
+      <a href="{% url 'view_content' 5 %}" style="text-decoration: none;"><button type="button"
+          class="btn-grad btn-text mx-auto">Class 5</button></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <a href="{% url 'view_content' 6 %}" style="text-decoration: none;"><button type="button"
+          class="btn-grad btn-text mx-auto">Class 6</button></a>
+    </div>
+    <div class="col">
+      <a href="{% url 'view_content' 7 %}" style="text-decoration: none;"><button type="button"
+          class="btn-grad btn-text mx-auto">Class 7</button></a>
+    </div>
+    <div class="col">
+      <a href="{% url 'view_content' 8 %}" style="text-decoration: none;"><button type="button"
+          class="btn-grad btn-text mx-auto">Class 8</button></a>
+    </div>
+    <div class="col">
+      <a href="{% url 'view_content' 9 %}" style="text-decoration: none;"><button type="button"
+          class="btn-grad btn-text mx-auto">Class 9</button></a>
+    </div>
+    <div class="col">
+      <a href="{% url 'view_content' 10 %}" style="text-decoration: none;"><button type="button"
+          class="btn-grad btn-text mx-auto">Class 10</button></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <a href="" style="text-decoration: none;"><button type="button" class="streamButton btn-text mx-auto">Class 11
+          (Arts)</button></a>
+    </div>
+    <div class="col">
+      <a href="" style="text-decoration: none;"><button type="button" class=" streamButton btn-text mx-auto">Class 11
+          (Science)</button></a>
+    </div>
+    <div class="col">
+      <a href="" style="text-decoration: none;"><button type="button" class="streamButton btn-text mx-auto">Class 11
+          (Commerce)</button></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <a href="" style="text-decoration: none;"><button type="button" class="streamButton btn-text mx-auto">Class 12
+          (Arts)</button></a>
+    </div>
+    <div class="col">
+      <a href="" style="text-decoration: none;"><button type="button" class="streamButton btn-text mx-auto">Class 12
+          (Science)</button></a>
+    </div>
+    <div class="col">
+      <a href="" style="text-decoration: none;"><button type="button" class="streamButton btn-text mx-auto">Class 12
+          (Commerce)</button></a>
+    </div>
+  </div>
+</div>
+<div class="container-fluid p-0 mt-5">
+  <div class="row text-center g-3">
+    <div class="col">
+      <img src="/static/images/1.jpg" class="rounded mx-auto shadow-sm" alt="..." style="width:280px;height: 170px;">
+    </div>
+    <div class="col">
+      <img src="/static/images/2.jpg" class="rounded mx-auto shadow-sm" alt="..." style="width:280px;height: 170px;">
+    </div>
+    <div class="col">
+      <img src="/static/images/3.jpg" class="rounded mx-auto shadow-sm" alt="..." style="width:280px;height: 170px;">
+    </div>
+    <div class="col">
+      <img src="/static/images/4.jpg" class="rounded mx-auto shadow-sm" alt="..." style="width:280px;height: 170px;">
+    </div>
+    <div class="col">
+      <img src="/static/images/5.jpg" class="rounded mx-auto shadow-sm" alt="..." style="width:280px;height: 170px;">
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

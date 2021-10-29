@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+View Content
+{% endblock title %}
+
+{% block content %}
+<div class="row">
+  <p class="topHeading">View Content</p>
+</div>
+<div class="row">
+  <div class="col-lg-6 col-sm-12 d-sm-inline-block">
+    <p class="btn-std float-lg-end btn-std-text text-center mx-auto"> Std. {{name}} </p>
+  </div>
+  <div class="col-lg-6 col-sm-12 d-sm-inline-block">
+    <p class="btn-std float-lg-start btn-std-text text-center mx-auto"> {{today|date:"d M Y"}} {{selectdate|date:"d M Y"}} </p>
+  </div>
+</div>
+<div class="row">
+  <p class="dateHeading">Select Date</p>
+</div>
+<div class="row text-center">
+  <form action="" method="POST" class="form-inline">
+    {% csrf_token %}
+    <span><input type="date" class="form-control mx-auto" style="width: 250px;" name="selectdate" required></span>
+    <span><input type="submit" class="btn btn-info btn-sm mt-1"></input></span>
+  </form>
+</div>
+{% for cn in content %}
+{% empty %} 
+  <div class="container mt-5">
+    <div class="row">
+      <p class="noContent mx-auto">No Content Uploaded Today</p>
+    </div>
+  </div>
+{% endfor %}
+<div class="container px-4 mt-4">
+  <div class="row g-5">
+    <div class="col py-3 mx-2 rounded" style="background-color: rgb(242, 242, 242);">
+      {% for cn in content %}
+      <div class="subject">{{cn.subject_1}}</div>
+      <div class="topic">{{cn.subject_1}}</div>
+      <div class="text-center">
+        <a href="{{cn.playlist_link_1}}"><img src="/static/logos/videoback.png" class="img-fluid" alt=""></a>
+      </div>
+      <div class="competency">{{cn.competency_1}}</div>
+      <div class="row">
+        <a href="{{cn.worksheet_link_1}}" style="text-decoration: none;" class="assignment mx-auto">Click here for
+          assignment</a>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="col py-3 mx-2 rounded" style="background-color: rgb(242, 242, 242);">
+      {% for cn in content %}
+      {% if cn.subject_2 %}
+      <div class="subject">{{cn.subject_2}}</div>
+      <div class="topic">{{cn.subject_2}}</div>
+      <div class="text-center">
+        <a href="{{cn.playlist_link_2}}"><img src="/static/logos/videoback.png" class="img-fluid mx-auto" alt=""></a>
+      </div>
+      <div class="competency">{{cn.competency_2}}</div>
+      <div class="row">
+        <a href="{{cn.worksheet_link_2}}" style="text-decoration: none;" class="assignment mx-auto">Click here for
+          assignment</a>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row mt-2">
+    <a href="https://wa.me/918595524493?text=Hello" style="text-decoration: none;" class="quiz mx-auto">To complete this week's assignment click here</a>
+  </div>
+</div>
+
+{% endblock content %}

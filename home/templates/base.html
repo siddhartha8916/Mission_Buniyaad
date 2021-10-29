@@ -2,46 +2,46 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <title>
-        {% block title %}
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+  <title>
+    {% block title %}
 
-        {% endblock title %}
-
-    </title>
+    {% endblock title %}
+  </title>
+  <style>
+    body {
+      background-image: url('/static/logos/back.png');
+    }
+  </style>
 </head>
 
+
 <body>
-    <nav class="navbar-light">
-        <div class="container-fluid text-center align-items-center justify-content-center">
-            <div class="row mt-2">
-                <div class="col-sm-3">
-                    <a href="/"><img src="/static/logos/rajasthan.png" class="img-fluid" alt="..." style="height: 80px;"></a>
-                </div>
-                <div class="col-sm-6">
-                    <img src="/static/logos/logo_new.png" class="img-fluid" alt="..." style="height: 80px;">
-                </div>
-                <div class="col-sm-3">
-                    <h4 class="alert alert-danger" style="color: black;">Aao Ghar Mein Sikhen</h4>
-                </div>
-            </div>
-        </div>
-    </nav>
+  <div class="container-fluid p-0"
+    style="background-image: url('/static/logos/topbanner.png');background-size: cover;background-position: center center;height: 220px;">
+    <div class="row">
+      <a href="/" class="rajasthanLogo"><img src="/static/logos/rajasthan.png" class="" alt="..." style="height: 80px;"></a>
+      <a href="/" class="agmsLogo"><img src="/static/logos/agmslogo.png" class="img-fluid" style="width:30%;" alt="..." ></a>
+      <a href="{% url 'uploadcontent' %}" class="adminUpload">Upload Content Admin</a>
+    </div>
+  </div>
     {% block content %}
 
     {% endblock content %}
-
-    <div class="footer-copyright text-center py-3 mt-5">© 2021 Copyright:
-        <a href="https://missionbuniyaad.com/"> MissionBuniyaad.com</a>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
-        crossorigin="anonymous"></script>
+  <div class="footer-copyright text-center py-3 mt-5">© 2021 Copyright:
+    <a href="https://aaogharmeinseekhein.com"> AaoGharMeinSeekhein.com</a>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
 </body>
 
 </html>
